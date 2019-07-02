@@ -31,7 +31,6 @@ class EscondeAparece extends React.Component {
         </button>
         {this.state.visibilidade &&
           <p>Voces sao maravilhosas</p>}
-          }
       </div>
     )
   }

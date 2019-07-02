@@ -284,13 +284,99 @@ class BemVinda extends React.Component {
 ```
 Quando declaramos dessa forma, temos acesso a vários **métodos** da biblioteca React, sendo que somente o [`render()`](https://pt-br.reactjs.org/docs/react-component.html#render) é obrigatório a ser usado.
 
+
 Isso significa que estamos criando um objeto classe que é filho de React.Component.
 
+-----------------
+
+**Quando usar um componente Funcional e quando usar um componente Classe?**
+
+Os componentes **funcionais** também são chamados de **_Stateless Components_**, ou _componentes sem estado_.
+
+Os componentes de **classe** também são chamados de **_Stateful Components_**, ou _componentes com estados_.
+
+Entraremos no tópico de **states ou estados** em breve, mas já adiantando que, apesar de não haver regras para criar um componente funcional ou de classe, há uma condição que definir um componente classe é **obrigatório**: se esse componente tem estado ou *state*.
+
+-----------
+
+## Estados e eventos
+Estados ou states são como props, porém são **atualizáveis e controladas pelo componente e privadas**. _States_ são objetos.
+
+[Referência Documentação - State e Lifecyle](https://pt-br.reactjs.org/docs/state-and-lifecycle.html)
+
+Como antes citado, _states_ só existem dentro de componentes de classe. Para criar _states_, devemos defini-las dentro do _constructor()_ da nossa Classe.
+
+```JSX
+class EscondeAparece extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      visibilidade: true
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>Esconde-Aparece</h1>
+        {this.state.visibilidade ? <p>Voces sao maravilhosas</p> : ''}
+      </div>
+    )
+  }
+```
+
+O _constructor()_ é um método nativo da classe que é chamado antes de criar o componente. Um estado não é passado de mãe pra filha, como acontece com _props_ - ele é definido, criado e manipulado dentro do próprio componente. Por esse motivo, dizemos que um estado é _privado_.
+
+> Saber o que é uma Classe em Javascript é importante para entender a estrutura do React. Para saber mais, leia na [documentação do MDN sobre Classes](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Classes).
 
 
+### Eventos e o setState()
+
+Para modificar um estado, é preciso chamar um método especial, o `setState()`. Ele recebe um parâmetro que é uma função, que deve retornar o novo valor do estado, ou seja um _objeto_.
+
+Essa função pode receber um parâmetro, que é o **estado no momento que a mudança é aplicada**, ou o **estado anterior**.
+
+```javascript
+setState((estadoAnterior) => {
+  return { estadoUm: estadoAnterior.estadoUm + 1 } )
+}
+```
+
+[Referência Documentação - setState()](https://pt-br.reactjs.org/docs/react-component.html#setstate)
+
+O `setState()` pode ser chamado dentro de um outr método, definido dentro do nosso componente Classe. No nosso exemplo, podemos criar um método para modificar o estado de visibilidade do componente `EscondeAparece`. 
+
+```JSX
+mudarVisibilidade = () => {
+  this.setState((estadoAnterior) => (
+    { visibilidade: !estadoAnterior.visibilidade }
+    )
+  )
+}
+```
+
+Toda vez que o `mudarVisibilidade()` for chamado, ele mudará o estado do componente.
+
+O que resta é conectar essa ação (método) com um gatilho (evento).
+
+[Referência Documentação - Eventos](https://pt-br.reactjs.org/docs/handling-events.html)
+
+A maneira como o React lida com eventos é bem parecido com os _eventos inline_. No componente que queremos inserir um escutador de evento (_event listener_), inserimos o evento e a função que é acionada, como se fossem "atributos" deste componente.
+
+```JSX
+<button onClick={this.mudarVisibilidade}> // lembre: usamos o this porque estamos dentro de uma classe
+```
+
+Esse código é suficiente para fazer com que o `button` acione a função `mudarVisibilidade()` toda vez que for _clicado_.
+
+Caso tenha curiosidade, é possível ver todos os [eventos suportados no React](https://pt-br.reactjs.org/docs/events.html#supported-events) e suas sintaxes.
+
+-----------
+
+## Ciclos de vida (lifecyle)
 
 
 -----------
 
 ### Referência avançada
-[Padrões em React: Criando Componentes - Medium](https://medium.com/@oieduardorabelo/padr%C3%B5es-em-react-criando-componentes-d35422034d75)
+- [Padrões em React: Criando Componentes - Medium](https://medium.com/@oieduardorabelo/padr%C3%B5es-em-react-criando-componentes-d35422034d75)
+- [[EN] Stateful and Stateless Components in React](https://programmingwithmosh.com/javascript/stateful-stateless-components-react/)
