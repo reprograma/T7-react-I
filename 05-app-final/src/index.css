@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* BOTOES */
+.btnComentario {
+  text-align: center;
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  font-size: 20px;
+  background-color: #333;
+  color: #f3f3f3;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.btnFontSize {
+  background-color: darkmagenta;
+}
+
+/* PREVISAO DO TEMPO */
+.previsao-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.previsao {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  padding: 25px;
+  max-width: 200px;
+  text-align: center;
+}
+
+.previsao__data {
+  margin: 0;
+}
+
+.previsao__resumo {
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.previsao__img {
+  max-height: 105px;
+  width: auto;
+}
+
+.previsao-temperatura {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.previsao-temperatura__linha td,
+.previsao-temperatura__linha th {
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+/* COMENTARIOS */
+
+.comentario {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  padding: 25px;
+  display: flex;
+  max-width: 960px;
+  margin: 50px auto;
+  align-items: center;
+}
+
+.comentario__perfil {
+  width: 100%;
+  max-width: 200px;
+  margin-right: 50px;
+  border-radius: 10px;
+}
+
+.comentario__nome {
+  margin: 0;
+  font-size: 24px;
+}
+
+.comentario__subtitulo {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.comentario hr {
+  max-width: 200px;
+  margin-left: 0;
+}

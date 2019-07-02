@@ -208,6 +208,8 @@ function BemVinda(props) {
 }
 ```
 
+> ATENÇÃO: o nome do componente tem que ter **sempre** sua primeira letra maiúscula (por exemplo, **B**emVinda, não bemvinda)
+
 Essa é a estrutura básica de um componente. De novo, componente em React é definido por:
 - Uma **função** (ou classe);
 - Recebe um **único parâmetro** (`props`);
@@ -270,6 +272,22 @@ ReactDOM.render(<BemVinda
 > **ATENÇÃO**: componentes em React **NÃO** são elementos HTML. Sua sintaxe foi desenvolvida para parecer com a linguagem HTML, porém não devem ser confundidos.
 
 ### Componente Classe
+Há uma outra forma de declarar um componente, que é por meio de extensão da classe `React.Component`:
+```JSX
+class BemVinda extends React.Component {
+  render() {
+    return (
+      return <h1>Olá, {props.nome}, {props.profissao}</h1>;
+    )
+  }
+}
+```
+Quando declaramos dessa forma, temos acesso a vários **métodos** da biblioteca React, sendo que somente o [`render()`](https://pt-br.reactjs.org/docs/react-component.html#render) é obrigatório a ser usado.
+
+Isso significa que estamos criando um objeto classe que é filho de React.Component.
+
+
+
 
 
 -----------
