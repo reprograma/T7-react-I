@@ -373,9 +373,37 @@ Caso tenha curiosidade, é possível ver todos os [eventos suportados no React](
 -----------
 
 ## Ciclos de vida (lifecyle)
+[Referência Documentação - Lifecycle](https://pt-br.reactjs.org/docs/react-component.html#component-life-cycle)
+
+Por padrão, o React deixa disponível alguns métodos que são acionados em momentos específicos da aplicação. Eles são separados em: montando (criação), atualizando (mudança) e desmontando (destruição).
+
+**Montando**
+- constructor(): aciona na hora de criar o componente. Propriedades e estados são estabelecidos neste momento.
+- render(): renderiza o componente no DOM.
+- componentDidMount(): aciona depois que o `render()` acontece.
+
+**Atualizando**
+- componentDidUpdate(): é inovocado depois que há uma atualização de estado ou qualquer outro tipo de atualização do componente.
+
+**Desmontando**
+- componentWillUnmount(): aciona depois que o componente é destruido ou desmontado.
+
+![Diagrama de métodos de ciclo de vida, quando ocorrem e em que ordem. Diagrama completo pode ser visto no link a seguir.](https://blog.larapulse.com/files/original/images/09/19/0919a813a4bc70d8ef6a7928ba24bca7f3247496.png)
+
+O diagrama interativo pode ser visto [neste link](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).
 
 
 -----------
+
+## Condicionais
+
+-----------
+
+## Listas e Chaves
+
+
+-----------
+
 
 ### Referência avançada
 - [Padrões em React: Criando Componentes - Medium](https://medium.com/@oieduardorabelo/padr%C3%B5es-em-react-criando-componentes-d35422034d75)
