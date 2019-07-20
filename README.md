@@ -396,6 +396,74 @@ O diagrama interativo pode ser visto [neste link](http://projects.wojtekmaj.pl/r
 -----------
 
 ## Condicionais
+No Javascript, podemos chamar a instrução de condicional de várias maneiras. Algumas delas:
+- Instrução if else
+- Operador &&
+- Ternário
+
+No React, podemos usar essas estruturas para renderizar pedaços de código dependendo do valor de uma variável.
+
+**Instrução if-else**
+
+Em qualquer momento do código, antes do `return` do `render()`, conseguimos inserir uma instrução para validar algo. Mas não conseguimos usar o _if-else_ dentro da estrutura do JSX.
+```JSX
+render() {
+  const ligado = this.state.ligado;
+  let resposta;
+  if (ligado) {
+    resposta = <div> Está ligado </div>
+  } else {
+    resposta = <div> Está desligado </div>
+  }
+  
+  return (
+    {resposta}
+  )
+}
+```
+
+**Operador &&**
+
+No Javascript, em uma avaliação de condicional, se a primeira parte é true, ela retorna a segunda.
+
+O Operador && vale uma lida na [documentação oficial](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Operadores_Logicos). De lá, podemos ver que:
+> _expr1 && expr2_
+> 
+> Retorna expr1 se essa pode ser convertido para falso; senão, retorna expr2. Dessa forma, quando usado para valores Booleanos, && retorna verdadeiro se ambos os operandos forem verdadeiro ; senão, retorna falso
+
+Nesse caso, no React, podemos usar a _expr1_ como uma validação e a _expr2_ como um elemento que queremos renderizar, caso a _expr1_ seja verdadeira.
+
+A expressão abaixo retorna a string `'Está ligado'` se `ligado` for `true`. Se não, não mostra nada.
+
+```JSX
+render() { 
+  const ligado = this.state.ligado;
+  return (
+    <div> { ligado && 'Está ligado' } </div>
+  )
+}
+```
+
+O ponto negativo do operador && é que não há como renderizar um elemento caso a validação dê `false`. Neste caso, podemos usar o ternário.
+
+**Operador Ternário**
+
+No Javascript, o ternário é usado para validações simples de true-false. A estrutura dele é:
+```javascript
+condicao ? 'se true, me renderize' : 'se false, me renderize'
+```
+
+Ou seja, podemos especificar o retorno de duas expressões, uma caso a condição seja verdadeira e outra caso ela seja falsa.
+```JSX
+render() { 
+  const ligado = this.state.ligado;
+  return (
+    <div> { ligado ? 'Está ligado' : 'Está desligado' } </div>
+  )
+}
+```
+
+Tanto o operador ternário quanto o && podem ser utilizados dentro do `return`. A instrução `if-else` deve ser chamada antes do `return` ou dentro de um outro método.
 
 -----------
 
