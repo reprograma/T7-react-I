@@ -396,6 +396,8 @@ O diagrama interativo pode ser visto [neste link](http://projects.wojtekmaj.pl/r
 -----------
 
 ## Condicionais
+[Referência Documentação - Condicinais no React](https://pt-br.reactjs.org/docs/conditional-rendering.html)
+
 No Javascript, podemos chamar a instrução de condicional de várias maneiras. Algumas delas:
 - Instrução if else
 - Operador &&
@@ -468,8 +470,47 @@ Tanto o operador ternário quanto o && podem ser utilizados dentro do `return`. 
 -----------
 
 ## Listas e Chaves
+[Referência Documentação - Listas e Chaves](https://pt-br.reactjs.org/docs/lists-and-keys.html)
 
+Muitas vezes vamos trabalhar com dados vindo de API's ou Json que estão arquivadas dentro de uma lista (ou _array_). Podemos utilizar métodos de varredura do Javascript para renderizar uma estrutura ou elemento dentro do nosso componente.
 
+Para isso, temos que chamar o método `map()`, por exemplo, e inserir o elemento que queremos renderizar dentro dele, podendo passar os dados também.
+
+```javascript
+render() {
+  return (
+    {comentariosAqui.map((comentario, index) => (
+      <div className="comentario" key={index}>
+        <Avatar autora={comentario.autora} />
+        <div className="comentario__detalhes">
+          <InfoUsuaria autora={comentario.autora.nome} subtitulo={comentario.subtitulo} />
+          <hr />
+          <Textao texto={comentario.texto} />
+        </div>
+      </div>
+    ))}
+  )
+}
+```
+Quando se renderiza uma coleção de elementos, o React pede uma chave ou _key_ em cada um desses itens para que ele consiga identificar, caso haja a necessidade de manipulá-lo.
+
+Para fazer isso, podemos passar o próprio index do elemento, ou um ID, que foi previamente passado como _props_.
+
+```javascript
+// pode-se usar o index da lista
+const listItems = numbers.map((number, index) =>
+  <li key={index}>
+    {number}
+  </li>
+);
+
+// ou um id previamente passado
+const listItems2 = numbers.map((number) =>
+  <li key={number.id}>
+    {number.num}
+  </li>
+);
+```
 -----------
 
 
